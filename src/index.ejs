@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Feed me</title>
   <link href="https://fonts.googleapis.com/css?family=Francois+One|Yanone+Kaffeesatz" rel="stylesheet">
- <link rel="stylesheet" href="//localhost:5000/build/bundle.css">
- <link rel="stylesheet" href="//localhost:5001/build/bundle.css">
+ <link rel="stylesheet" href="https://svelte-micro-frontends.github.io/container/build/bundle.css">
+ <link rel="stylesheet" href="https://svelte-micro-frontends.github.io/restaurants/build/bundle.css">
 <style>
 html, body {
   width: 100%;
@@ -61,7 +61,10 @@ main {
   <script type="systemjs-importmap">
     {
       "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.5/lib/system/single-spa.min.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.5/lib/system/single-spa.min.js",
+        "@feedme/root-config": "https://svelte-micro-frontends.surge.sh/feedme-root-config.js",
+        "@feedme/container": "https://svelte-micro-frontends.github.io/container/build/bundle.js",
+        "@feedme/restaurants": "https://svelte-micro-frontends.github.io/restaurants/build/bundle.js"
       }
     }
   </script>

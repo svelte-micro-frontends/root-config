@@ -5,7 +5,8 @@
     "lint": "eslint src --ext js",
     "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
     "format": "prettier --write \"./**\"",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "deploy": "npm run build && surge ./dist svelte-micro-frontends.surge.sh"
   },
   "husky": {
     "hooks": {
