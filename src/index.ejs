@@ -6,9 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Feed me</title>
   <link href="https://fonts.googleapis.com/css?family=Francois+One|Yanone+Kaffeesatz" rel="stylesheet">
+
+  <% if (isLocal) { %>
+  <link rel="stylesheet" href="//localhost:5000/build/bundle.css">
+  <link rel="stylesheet" href="//localhost:5001/build/bundle.css">
+  <link rel="stylesheet" href="//localhost:5002/build/bundle.css">
+  <% } else { %>
  <link rel="stylesheet" href="https://svelte-micro-frontends.github.io/container/build/bundle.css">
  <link rel="stylesheet" href="https://svelte-micro-frontends.github.io/restaurants/build/bundle.css">
+ <link rel="stylesheet" href="https://svelte-micro-frontends.github.io/order/build/bundle.css">
+ <% } %>
 <style>
+
 html, body {
   width: 100%;
   height: 100%;
@@ -64,7 +73,8 @@ main {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.5/lib/system/single-spa.min.js",
         "@feedme/root-config": "https://svelte-micro-frontends.surge.sh/feedme-root-config.js",
         "@feedme/container": "https://svelte-micro-frontends.github.io/container/build/bundle.js",
-        "@feedme/restaurants": "https://svelte-micro-frontends.github.io/restaurants/build/bundle.js"
+        "@feedme/restaurants": "https://svelte-micro-frontends.github.io/restaurants/build/bundle.js",
+        "@feedme/order": "https://svelte-micro-frontends.github.io/order/build/bundle.js"
       }
     }
   </script>
@@ -79,7 +89,8 @@ main {
       "imports": {
         "@feedme/root-config": "//localhost:9000/feedme-root-config.js",
         "@feedme/container": "//localhost:5000/build/bundle.js",
-        "@feedme/restaurants": "//localhost:5001/build/bundle.js"
+        "@feedme/restaurants": "//localhost:5001/build/bundle.js",
+        "@feedme/order": "//localhost:5002/build/bundle.js"
       }
     }
   </script>
@@ -107,6 +118,9 @@ main {
     <single-spa-router>
       <application name="@feedme/container"></application>
       <main>
+        <route path="order">
+          <application name="@feedme/order"></application>
+        </route>
         <route path="restaurants">
           <application name="@feedme/restaurants"></application>
         </route>
